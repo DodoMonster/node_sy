@@ -1,0 +1,99 @@
+<div style="text-align:center">
+  <h1 >产品列表</h1>
+</div>
+<hr/>
+<div class="btn-group pull-right">
+        <button class="btn btn-default" ng-click="pcl.add()">
+          <span class="glyphicon glyphicon-plus"></span>
+        </button>
+  </div>
+  <table ng-table="pcl.tableParams"  class="table table-bordered table-hover table-condensed">
+    <tbody>
+  <colgroup>
+      <col width="9%" />
+      <col width="9%" />
+      <col width="6%" />
+      <col width="17%" />
+      <col width="6%" />
+      <col width="6%" />
+      <col width="6%" />
+      <col width="9%" />
+      <col width="8%" />
+      <col width="8%" />
+      <col width="8%" />
+ </colgroup>
+      <tr ng-repeat="row in $data"  ng-form="rowForm">
+        <td  ng-switch="row.isEditing" data-title="'进场时间'" >
+             <span ng-switch-default>{{row.intime}}</span>
+          <div  ng-class="controls" ng-switch-when="true">
+              <input type="text" name="intime" ng-model="row.intime" class="form-control input-sm" required />
+            </div>
+        </td>
+        <td data-title="'出场时间'"  ng-switch="row.isEditing">
+            <span ng-switch-default>{{row.outtime}}</span>
+            <div class="controls" ng-class="" ng-switch-when="true">
+                <input type="text" name="outtime" ng-model="row.outtime" class="form-control input-sm" required />
+            </div>
+        </td>
+        <td data-title="'编号'" ng-switch="row.isEditing">
+          <span ng-switch-default>{{row.number}}</span>
+          <div class="controls" ng-class="" ng-switch-when="true">
+              <input type="text" name="number" ng-model="row.number" class="form-control input-sm" required />
+          </div>
+        </td>
+        <td data-title="'溯源码'" ng-switch="row.isEditing">
+          <span ng-switch-default>{{row.suyuancode}}</span>
+          <div class="controls" ng-class="" ng-switch-when="true">
+              <input type="text" name="suyuancode" ng-model="row.suyuancode" class="form-control input-sm" required />
+          </div>
+        </td>
+        <td data-title="'批次'" filter="{pici: 'number'}"  sortable="'number'" ng-switch="row.isEditing">
+            <span ng-switch-default>{{row.pici}}</span>
+          <div class="controls" ng-class="" ng-switch-when="true">
+              <input type="text" name="pici" ng-model="row.pici" class="form-control input-sm" required />
+          </div>
+        </td>
+        <td data-title="'种类'" filter="{category: 'text'}" ng-switch="row.isEditing">
+            <span ng-switch-default>{{row.category}}</span>
+          <div class="controls" ng-class="" ng-switch-when="true">
+              <input type="text" name="category" ng-model="row.category" class="form-control input-sm" required />
+          </div>
+        </td>
+        <!-- <td ng-switch on="row.state">
+          <td ng-switch-when="1">活</td>
+          <td ng-switch-when="0">死</td>
+        </td> -->
+        <td data-title="'状态'" filter="{state: 'text'}"  ng-switch="row.isEditing">
+            <span ng-switch-default>{{row.state}}</span>
+          <div class="controls" ng-class="" ng-switch-when="true">
+              <input type="text" name="state" ng-model="row.state" class="form-control input-sm" required />
+          </div>
+        </td>
+        <td data-title="'价格'" sortable="'number'" ng-switch="row.isEditing">
+            <span ng-switch-default>{{row.price}}</span>
+            <div class="controls" ng-class="" ng-switch-when="true">
+                <input type="text" name="price" ng-model="row.price" class="form-control input-sm" required />
+            </div>
+        </td>
+        <td data-title="'是否售出'" ng-switch="row.isEditing">
+            <span ng-switch-default>{{row.isSaled}}</span>
+            <div class="controls" ng-class="" ng-switch-when="true">
+                <input type="text" name="isSaled" ng-model="row.isSaled" class="form-control input-sm" required />
+            </div>
+        </td>
+        <td data-title="'质检信息'" class="text-c"><button class="btn btn-default btn-sm " ng-click="pcl.zhijian(row.number)" ><span class="glyphicon glyphicon-envelope"></span></button></td>
+        <td data-title="'用药历史'" class="text-c"><button class="btn btn-default btn-sm " ng-click="yongyao()" ><span class="glyphicon glyphicon-list-alt"></span></button></td>
+        <td data-title="'操作'">
+            <button class="btn btn-primary btn-sm " ng-click="pcl.save(row, rowForm)" ng-if="row.isEditing" ng-disabled="rowForm.$pristine || rowForm.$invalid"><span class="glyphicon glyphicon-ok"></span></button>
+            <button class="btn btn-default btn-sm" ng-click="pcl.cancel(row, rowForm)" ng-if="row.isEditing"><span class="glyphicon glyphicon-remove"></span></button>
+            <button class="btn btn-default btn-sm" ng-click="row.isEditing = true" ng-if="!row.isEditing"><span class="glyphicon glyphicon-pencil"></span></button>
+            <button class="btn btn-danger btn-sm" ng-click="pcl.del(row)" ng-if="!row.isEditing"><span class="glyphicon glyphicon-trash"></span></button>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="btn-group">
+    <button class="btn btn-default pull-right" ng-click="pcl.add()">
+      <span class="glyphicon glyphicon-plus">上一页</span>
+    </button>
+  </div>

@@ -1,0 +1,25 @@
+[
+  {
+    id:1,
+    name:'厂商一',
+    telephone:'18812112343',
+    address:'华南农业大学',
+  },
+  {     id:2,
+        name:'厂商二',
+        telephone:'18812112343',
+        address:'华南农业大学',
+  },
+  {
+    id:3,
+    name:'厂商三',
+    telephone:'18812112343',
+    address:'华南农业大学',
+  },
+  {
+    id:4,
+    name:"厂商四",
+    "telephone":"18812112343",
+    "address":"华南农业大学",
+  },
+]
