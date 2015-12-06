@@ -49,7 +49,8 @@ app.controller('DisCtrl', ['$scope', '$uibModal', 'DisService', function($scope,
                     telephone:'',
                   };
         }
-        aInfo.id =result.id;
+
+        aInfo.id = result.id;
         $scope.datas.splice(0, 0, aInfo);
       });
     }, function() {
