@@ -1,17 +1,7 @@
 var mongoose = require('mongoose');
 var autoIncrement = require('mongoose-auto-increment');
+var connection = require('../config/c_mongo');
 var Schema = mongoose.Schema;
-
-var dbName = 'syDB';
-var connectionString = 'mongodb://localhost:27017/' + dbName;
-
-var connection = mongoose.connect(connectionString,  function(err) {
-  if (err) {
-    console.log('连接失败');
-  }else {
-    console.log('连接成功');
-  }
-});
 
 var disSchema = new Schema({
   id:Number,

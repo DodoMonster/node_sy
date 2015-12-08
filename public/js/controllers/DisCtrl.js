@@ -12,14 +12,14 @@ app.controller('DisCtrl', ['$scope', '$uibModal', 'DisService', function($scope,
   };
 
   $scope.cancle = function(info) {
-    info.name = _this.original.name;
+    info.name = _this.original.name;    //取消修改的内容，将原数据返回
     info.telephone =  _this.original.telephone;
     info.address = _this.original.address;
     info.isEditing = false;
   };
 
   $scope.edit = function(info) {
-    _this.original = angular.copy(info);
+    _this.original = angular.copy(info); // 将原数据保存
     info.isEditing = true;
 
   };
@@ -36,8 +36,8 @@ app.controller('DisCtrl', ['$scope', '$uibModal', 'DisService', function($scope,
 
   $scope.open = function(size) {
     var modalInstance = $uibModal.open({
-      templateUrl: 'myModal.html',
-      controller:'myModalCtrl',
+      templateUrl: 'disModal.html',
+      controller:'disModalCtrl',
     });
     modalInstance.result.then(function(aInfo) {
       DisService.add(aInfo, function(result) {
@@ -52,6 +52,7 @@ app.controller('DisCtrl', ['$scope', '$uibModal', 'DisService', function($scope,
 
         aInfo.id = result.id;
         $scope.datas.splice(0, 0, aInfo);
+
       });
     }, function() {
 
@@ -60,7 +61,7 @@ app.controller('DisCtrl', ['$scope', '$uibModal', 'DisService', function($scope,
 },
 ]);
 
-app.controller('myModalCtrl', ['$scope', '$uibModalInstance', function($scope, $uibModalInstance) {
+app.controller('disModalCtrl', ['$scope', '$uibModalInstance', function($scope, $uibModalInstance) {
   $scope.ok = function() {
 
     $uibModalInstance.close($scope.aInfo);
