@@ -6,7 +6,6 @@ router.route('/pro')
 .get(function(req, res) {
   Pro.find(function(err, result) {
     if (err)  res.end(err);
-    console.log(result);
     res.json(result);
   });
 })
@@ -15,12 +14,17 @@ router.route('/pro')
   var pro = new Pro(req.body);
   pro.save(function(err) {
     if (err)  res.end(err);
-    console.log(pro);
     res.send({
       message:'Pro Added!',
       id:pro.id,
     });
   });
+});
+
+router.route('/:cType/:cPage')
+.post(function(req, res) {
+  console.log(req.body);
+  console.log(req.params);
 });
 
 router.route('/pro/:id')
@@ -51,6 +55,7 @@ router.route('/pro/:id')
   });
 })
 .delete(function(req, res) {
+  console.log(req.params.id);
   Pro.remove({
     id:req.params.id,
   }, function(err, pro) {

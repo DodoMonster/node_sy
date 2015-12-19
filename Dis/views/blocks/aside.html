@@ -1,0 +1,61 @@
+<div class="aside-wrapper bg-black">
+  <ul ui-nav class="nav">
+      <li>
+        <span class="padder text-xs m-t m-b-sm">Navigation</span>
+      </li>
+      <li class="">
+        <a href class="auto" ui-sref="app.purchases">
+          <i class="glyphicon glyphicon-circle-arrow-down"></i>
+          <span class="font-bold">进货管理</span>
+        </a>
+      </li>
+      <li class="">
+        <a href class="auto" ui-sref="app.shipment">
+          <i class="glyphicon glyphicon-circle-arrow-up"></i>
+          <span class="font-bold">出货管理</span>
+        </a>
+      </li>
+      <li class="">
+        <a href class="auto" ui-sref="app.storage">
+          <i class="glyphicon glyphicon-list-alt"></i>
+          <span class="font-bold">仓储管理</span>
+        </a>
+      </li>
+      <li class="">
+        <a href class="auto" ui-sref="app.statistics">
+          <i class="glyphicon glyphicon-signal"></i>
+          <span class="font-bold">统计查询</span>
+        </a>
+      </li>
+      <li class="">
+        <a href class="auto" ui-sref="app.logistics">
+          <i class="glyphicon glyphicon-plane"></i>
+          <span class="font-bold">记录物流信息</span>
+        </a>
+      </li>
+      <li class="">
+        <a href class="auto">
+          <span class="pull-right text-muted">
+            <i class="fa fa-fw fa-angle-right text"></i>
+            <i class="fa fa-fw fa-angle-down text-active"></i>
+          </span>
+          <i class="glyphicon glyphicon-folder-close"></i>
+          <span class="font-bold">屠宰信息管理</span>
+        </a>
+        <ul class="nav nav-sub">
+          <li ui-sref-active="active">
+            <a ui-sref="app.printTag">
+              <i class="glyphicon glyphicon-tags"></i>
+              <span>打印子标签</span>
+            </a>
+          </li>
+          <li ui-sref-active="active">
+            <a ui-sref="app.inputTag">
+              <i class="glyphicon glyphicon-pencil"></i>
+              <span>录入原标签的信息</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+  </ul>
+</div>

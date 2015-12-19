@@ -1,0 +1,23 @@
+{
+  "name": "sy_ht",
+  "homepage": "https://github.com/NumberZ/xiangmu",
+  "authors": [
+    "NumberZ <215903432@qq.com>"
+  ],
+  "description": "suyuanhoutai",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular":"~1.4.7",
+    "angular-ui-router": "~0.2.15",
+    "angular-resource": "~1.4.8"
+  }
+}

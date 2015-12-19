@@ -1,0 +1,62 @@
+<div class="aside-wrapper bg-black">
+  <ul ui-nav class="nav">
+      <li>
+        <span class="padder text-xs m-t m-b-sm">Navigation</span>
+      </li>
+      <li class="">
+        <a href class="auto" ui-sref="app.log">
+          <i class="glyphicon glyphicon-book"></i>
+          <span class="font-bold">日志管理</span>
+        </a>
+      </li>
+      <li class="">
+        <a href class="auto">
+          <span class="pull-right text-muted">
+            <i class="fa fa-fw fa-angle-right text"></i>
+            <i class="fa fa-fw fa-angle-down text-active"></i>
+          </span>
+          <i class="glyphicon glyphicon-search"></i>
+          <span class="font-bold">综合查询</span>
+        </a>
+        <ul class="nav nav-sub">
+          <li ui-sref-active="active">
+            <a ui-sref="app.facSearch">
+              <i class="glyphicon glyphicon-user"></i>
+              <span>厂家查询</span>
+            </a>
+          </li>
+          <li ui-sref-active="active">
+            <a ui-sref="app.proSearch">
+              <i class="glyphicon glyphicon-briefcase"></i>
+              <span>产品查询</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="">
+        <a href class="auto">
+          <span class="pull-right text-muted">
+            <i class="fa fa-fw fa-angle-right text"></i>
+            <i class="fa fa-fw fa-angle-down text-active"></i>
+          </span>
+          <i class="glyphicon glyphicon-tasks"></i>
+          <span class="font-bold">生产商管理</span>
+        </a>
+        <ul class="nav nav-sub">
+          <li ui-sref-active="active">
+            <a ui-sref="app.facSetting">
+              <i class="glyphicon glyphicon-bookmark"></i>
+              <span>生产厂商信息管理</span>
+            </a>
+          </li>
+          <li ui-sref-active="active">
+            <a ui-sref="app.baseSetting">
+              <i class="glyphicon glyphicon-flag"></i>
+              <span>生产基地信息管理</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+  </ul>
+</div>

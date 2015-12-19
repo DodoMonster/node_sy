@@ -1,0 +1,41 @@
+// main: style.less
+.box-shadow(@shadow) {
+  box-shadow:@shadow;
+  -moz-box-shadow:@shadow;
+  -webkit-box-shadow:@shadow;
+}
+
+.border-radius(@radius) {
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.clearfix() {
+  &:after{
+    content: " ";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+    clear: both;
+  }
+}
+
+.transition(@transition) {
+  -webkit-transition: @transition;
+          transition: @transition;
+}
+.box-sizing(@boxmodel) {
+  -webkit-box-sizing: @boxmodel;
+     -moz-box-sizing: @boxmodel;
+          box-sizing: @boxmodel;
+}
+
+.bg-black {
+  color:#7793a7;
+  background-color: @brand-black;
+}
+.text-lt {
+  color: #c4d0d9 !important;
+}
