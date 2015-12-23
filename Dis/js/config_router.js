@@ -51,14 +51,14 @@ function routeConfig($stateProvider, $urlRouterProvider, $locationProvider) {
           url:'/logistics',
           templateUrl:'views/logistics.html',
         })
-        .state('app.statistics', {
+        .state('app.dispro', {
           url:'/statistics',
-          templateUrl: 'views/statistics.html',
-          controller: 'PlistCtrl as pcl',
+          templateUrl: 'views/dispro.html',
+          controller: 'ProCtrl as pcl',
           resolve:{
             deps:['$ocLazyLoad',
               function($ocLazyLoad) {
-                return $ocLazyLoad.load(['js/controllers/PlistCtrl.js']);
+                return $ocLazyLoad.load(['js/controllers/ProCtrl.js']);
               },
              ],
           },

@@ -40,15 +40,6 @@ app.controller('DisCtrl', ['$scope', '$uibModal', 'DisService', function($scope,
     });
     modalInstance.result.then(function(aInfo) {
       DisService.add(aInfo, function(result) {
-        if (aInfo == undefined) {
-          aInfo = {
-                    id:'',
-                    name:'',
-                    address:'',
-                    telephone:'',
-                  };
-        }
-
         aInfo.id = result.id;
         $scope.datas.splice(0, 0, aInfo);
 

@@ -11,7 +11,7 @@
     //     });
     //   },
     // });
-    PurService.query(function(data) {
+    PurService.query(function(data) {   //加载数据
       $scope.datas = data;
       _this.tableParams = new NgTableParams({
         count:50,
@@ -21,12 +21,13 @@
     });
 
     $scope.add = function() {
-      var modalInstance = $uibModal.open({
+      var modalInstance = $uibModal.open({   //弹出添加表单
         templateUrl: 'proModal.html',
         controller:'proModalCtrl',
       });
       modalInstance.result.then(function(pInfo) {
         PurService.add(pInfo, function(result) {
+          pInfo.id = result.id;
           _this.tableParams.settings().data.splice(0, 0, pInfo);
           _this.tableParams.reload();
         });
@@ -44,12 +45,12 @@
           row[key] = _this.original[key];
         }
       });
+
       row.isEditing = false;
     };
 
     $scope.del = function(row) {
       PurService.del({purId:row.id}, function(message) {
-        console.log(message);
         _.remove(_this.tableParams.settings().data, function(index) {
           return index.id == row.id;
         });
@@ -73,7 +74,7 @@ app.controller('proModalCtrl', ['$scope', '$uibModalInstance', function($scope, 
   };
   $scope.ok = function() {
     _.forEach($scope.pInfo, function(n, key) {
-      if (key == 'intime' || key == 'outtime') {
+      if (key == 'intime') {
         $scope.pInfo[key] = $scope.pInfo[key].toLocaleDateString();
       }
     });
@@ -83,6 +84,7 @@ app.controller('proModalCtrl', ['$scope', '$uibModalInstance', function($scope, 
 
   $scope.intimeOpen = function($event) {
     $scope.status.intimeOpened = true;
+    console.log(111);
   };
 
   $scope.today = function() {

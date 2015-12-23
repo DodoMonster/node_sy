@@ -192,7 +192,7 @@ pre {
   padding: 5px 15px;
 }
 hr {
-  border-top: 1px solid #ccc;
+  border-top: 1px dashed #ccc;
   width: 900px;
 }
 html,

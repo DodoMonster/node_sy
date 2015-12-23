@@ -14,7 +14,6 @@ app.controller('ShipCtrl', ['$scope', 'NgTableParams', 'ShipService',  '$uibModa
 
   ShipService.query(function(data) {
     $scope.datas = data;
-    console.log(data);
     _this.tableParams = new NgTableParams({
       count:50,
     }, {
@@ -29,6 +28,7 @@ app.controller('ShipCtrl', ['$scope', 'NgTableParams', 'ShipService',  '$uibModa
     });
     modalInstance.result.then(function(pInfo) {
       ShipService.add(pInfo, function(result) {
+        pInfo.id = result.id;
         _this.tableParams.settings().data.splice(0, 0, pInfo);
         _this.tableParams.reload();
       });
@@ -51,6 +51,7 @@ app.controller('ShipCtrl', ['$scope', 'NgTableParams', 'ShipService',  '$uibModa
   };
 
   $scope.del = function(row) {
+    console.log(row);
     ShipService.del({shipId:row.id}, function(message) {
       console.log(message);
       _.remove(_this.tableParams.settings().data, function(index) {
@@ -76,7 +77,7 @@ app.controller('proModalCtrl', ['$scope', '$uibModalInstance', function($scope, 
 };
   $scope.ok = function() {
   _.forEach($scope.pInfo, function(n, key) {
-    if (key == 'intime' || key == 'outtime') {
+    if (key == 'outtime') {
       $scope.pInfo[key] = $scope.pInfo[key].toLocaleDateString();
     }
   });
@@ -86,6 +87,7 @@ app.controller('proModalCtrl', ['$scope', '$uibModalInstance', function($scope, 
 
   $scope.outtimeOpen = function($event) {
   $scope.status.outtimeOpened = true;
+  console.log(111);
 };
 
   $scope.today = function() {

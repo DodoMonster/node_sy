@@ -10,11 +10,9 @@ router.route('/dis')
   });
 })
 .post(function(req, res) {
-  console.log(req.body);
   var dis = new Dis(req.body);
   dis.save(function(err) {
     if (err)  res.end(err);
-    console.log(dis);
     res.send({
       message:'Dis Added!',
       id:dis.id,

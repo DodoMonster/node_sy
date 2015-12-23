@@ -12,6 +12,7 @@
       });
       modalInstance.result.then(function(pInfo) {
         ProService.add(pInfo, function(result) {
+          pInfo.id = result.id;
           $scope.datas.splice(0, 0, pInfo);
         });
       });

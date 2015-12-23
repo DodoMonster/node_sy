@@ -6,11 +6,8 @@ var Schema = mongoose.Schema;
 var shipSchema = new Schema({
   id:Number,
   outtime:String,
-  name:String,
   category:String,
   number:Number,
-  unit:String,
-  price:Number,
   pici:Number,
 });
 

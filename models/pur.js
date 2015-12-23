@@ -7,11 +7,8 @@ var purSchema = new Schema({
   id:Number,
   factory:String,
   intime:String,
-  name:String,
   category:String,
   number:Number,
-  unit:String,
-  price:Number,
   pici:Number,
 });
 

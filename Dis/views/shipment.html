@@ -1,11 +1,9 @@
 <div style="text-align:center">
-  <h1>出货管理</h1>
+  <h1>出货管理
+    <button type="button" class="btn my_btn pull-right" ng-click="add()"><span class="glyphicon glyphicon-plus"></span></button>
+</h1>
 </div>
 <hr/>
-<div class="p_ops clearfix">
-
-      <button type="button" class="btn my_btn pull-left" ng-click="add()"><span class="glyphicon glyphicon-plus"></span></button>
-</div>
 <table ng-table="ship.tableParams"  class="table table-bordered table-hover table-condensed"  show-filter="true" >
   <tbody>
       <colgroup>
@@ -28,12 +26,6 @@
               <input type="text" name="outtime" ng-model="row.outtime" class="form-control input-sm" required />
           </div>
       </td>
-      <td data-title="'名称'" ng-switch="row.isEditing">
-        <span ng-switch-default>{{row.name}}</span>
-        <div class="controls" ng-class="" ng-switch-when="true">
-            <input type="text" name="name" ng-model="row.name" class="form-control input-sm" required />
-        </div>
-      </td>
       <td data-title="'种类'" ng-switch="row.isEditing">
         <span ng-switch-default>{{row.category}}</span>
         <div class="controls" ng-class="" ng-switch-when="true">
@@ -46,19 +38,7 @@
             <input type="text" name="number" ng-model="row.number" class="form-control input-sm" required />
         </div>
       </td>
-      <td data-title="'单位'"  ng-switch="row.isEditing">
-          <span ng-switch-default>{{row.unit}}</span>
-        <div class="controls" ng-class="" ng-switch-when="true">
-            <input type="text" name="unit" ng-model="row.unit" class="form-control input-sm" required />
-        </div>
-      </td>
-      <td data-title="'销售价格'" filter="{price: 'number'}"  ng-switch="row.isEditing">
-          <span ng-switch-default>{{row.price}}</span>
-        <div class="controls" ng-class="" ng-switch-when="true">
-            <input type="text" name="price" ng-model="row.price" class="form-control input-sm" required />
-        </div>
-      </td>
-      <td data-title="'批次'" sortable="'number'"  filter="{pici: 'number'}" ng-switch="row.isEditing">
+      <td data-title="'批次码'" sortable="'number'"  filter="{pici: 'number'}" ng-switch="row.isEditing">
           <span ng-switch-default>{{row.pici}}</span>
           <div class="controls" ng-class="" ng-switch-when="true">
               <input type="text" name="pici" ng-model="row.pici" class="form-control input-sm" required />
@@ -98,26 +78,12 @@
                    <div class="col-sm-4">
                        <input type="text" class="form-control  m-b" ng-model="pInfo.category" placeholder="请输入种类" required>
                   </div>
-               <label for="name" class="col-sm-2 control-label">名称：</label>
-                  <div class="col-sm-4">
-                      <input type="text" class="form-control" ng-model="pInfo.name" placeholder="请输入名称" required>
-                  </div>
-             </div>
-            <div class="form-group">
               <label for="number" class="col-sm-2 control-label">数量：</label>
                   <div class="col-sm-4">
-                      <input type="text" class="form-control  m-b" ng-model="pInfo.number" placeholder="请输入数量" required>
+                      <input type="number" class="form-control  m-b" ng-model="pInfo.number" placeholder="请输入数量" required>
                  </div>
-              <label for="unit" class="col-sm-2 control-label">单位：</label>
-                 <div class="col-sm-4">
-                     <input type="text" class="form-control" ng-model="pInfo.unit" placeholder="请输入单位" required>
-                 </div>
-            </div>
+             </div>
             <div class="form-group">
-              <label for="price" class="col-sm-2 control-label">价格：</label>
-                  <div class="col-sm-4">
-                      <input type="number" class="form-control  m-b" ng-model="pInfo.price" placeholder="请输入价格" required>
-                 </div>
               <label for="pici" class="col-sm-2 control-label">批次：</label>
                  <div class="col-sm-4">
                      <input type="number" class="form-control" ng-model="pInfo.pici" placeholder="请输入批次" required>
