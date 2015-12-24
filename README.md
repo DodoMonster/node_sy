@@ -1,6 +1,12 @@
-# node_sy
-基于溯源的后台管理系统
+# 溯源后台系统
 
- 前端：angular + bootstrap
- 后端：express 提供 RESTful API
- 数据库：mongodb
+ 前端：angular + bootstrap </br>
+ 后端：express 提供 RESTful API </br>
+ 数据库：mongodb </br>
+
+克隆到本地：
+
+* 启动mongodb
+* 在终端进入项目目录，启动node app.js
+* 在浏览器地址栏输入http://localhost:3000
+
