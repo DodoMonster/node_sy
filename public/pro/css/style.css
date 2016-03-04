@@ -454,6 +454,12 @@ body {
   font-size: 18px;
   line-height: 34px;
 }
+.table {
+  text-align: center;
+}
+.table tbody > tr > td {
+  vertical-align: middle;
+}
 .main_wrap {
   width: 70%;
   height: 200px;
@@ -576,8 +582,11 @@ body {
 }
 .ops {
   width: 600px;
-  margin: 0 auto;
+  margin: 0 auto 20px auto;
 }
 .ops .input-lg {
   height: 50px;
+}
+.ops span {
+  font-size: 20px;
 }

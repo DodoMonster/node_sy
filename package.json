@@ -9,8 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-   "express": "*",
-   "body-parser": "*",
-   "mongoose": "*"
- }
+    "angularjs-toaster": "^1.2.0",
+    "body-parser": "*",
+    "express": "*",
+    "mongoose": "*"
+  }
 }

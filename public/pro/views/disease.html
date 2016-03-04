@@ -1,0 +1,102 @@
+<div style="text-align:center">
+  <h1 >生病信息</h1>
+</div>
+<hr/>
+<div class="dis_wrapper">
+    <div class="ops clearfix">
+        <div class="col-xs-8">
+            <span>牲畜溯源码：{{suyuancode}}</span>
+        </div>
+        <button type="button" class="btn my_btn pull-right" style="width:24px;height:24px" ng-click="openModal()"><span class="glyphicon glyphicon-plus"></span></button>
+    </div>
+     <table ng-table="DiseaseCtrl.tableParams" class="table table-bordered table-hover table-condensed text-c">
+      <tbody>
+        <colgroup>
+          <col width="10%" />
+          <col width="15%" />
+          <col width="15%" />
+          <col width="50%" />
+          <col width="10%" />
+        </colgroup>
+        <tr ng-repeat="row in datas"  ng-form="rowForm">
+          <td  data-title="'病名'" ng-switch="row.isEditing">
+             <span ng-switch-default>{{row.diseaseName}}</span>
+          <div  ng-class="controls" ng-switch-when="true">
+              <input type="text" name="diseaseName" ng-model="row.diseaseName" class="form-control input-sm" required />
+            </div>
+          </td>
+          <td data-title="'生病开始日期'"  ng-switch="row.isEditing">
+            <span ng-switch-default>{{row.startDate}}</span>
+            <div class="controls" ng-class="" ng-switch-when="true">
+                <input type="text" name="startDate" ng-model="row.startDate" class="form-control input-sm" required />
+            </div>
+          </td>
+          <td data-title="'病愈日期'" ng-switch="row.isEditing">
+            <span ng-switch-default>{{row.endDate}}</span>
+            <div class="controls" ng-class="" ng-switch-when="true">
+                <input type="text" name="endDate" ng-model="row.endDate" class="form-control input-sm" required />
+            </div>
+          </td>
+          <td data-title="'用药信息'" ng-switch="row.isEditing">
+            <span ng-switch-default>{{row.comments}}</span>
+            <div class="controls" ng-class="" ng-switch-when="true">
+                <input type="text" name="comments" ng-model="row.comments" class="form-control input-sm" required />
+            </div>
+          </td>
+          <td data-title="'操作'">
+            <button class="btn btn-primary btn-sm " ng-click="save(row)" ng-if="row.isEditing" ng-disabled="rowForm.$pristine || rowForm.$invalid"><span class="glyphicon glyphicon-ok"></span></button>
+            <button class="btn btn-default btn-sm" ng-click="cancel(row)" ng-if="row.isEditing"><span class="glyphicon glyphicon-remove"></span></button>
+            <button class="btn btn-default btn-sm" ng-click="edit(row)" ng-if="!row.isEditing"><span class="glyphicon glyphicon-pencil"></span></button>
+            <button class="btn btn-danger btn-sm" ng-click="del(row)" ng-if="!row.isEditing"><span class="glyphicon glyphicon-trash"></span></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<script type="text/ng-template" id="disModal.html">
+         <div class="modal-header">
+             <h3 class="modal-title">添加生病信息</h3>
+         </div>
+         <div class="modal-body clearfix add_pro">
+           <div class＝"form-horizontal" ng-form="add_dis">
+             <div class="form-group">
+               <label for="startDate" class="col-sm-3 control-label">生病开始日期：</label>
+               <div class="col-sm-9">
+                    <p class="input-group">
+                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="Info.startDate" is-open="status.startDateOpened"  datepicker-options="dateOptions"  ng-required="true" close-text="Close" required/>
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="startDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                      </span>
+                    </p>
+                </div>
+             </div>
+             <div class="form-group">
+               <label for="outtime" class="col-sm-3 control-label">病愈日期：</label>
+               <div class="col-sm-9">
+                    <p class="input-group">
+                      <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="Info.endDate" is-open="status.endDateOpened"  datepicker-options="dateOptions"  ng-required="true" close-text="Close" required />
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="endDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                      </span>
+                    </p>
+                </div>
+             </div>
+             <div class="form-group">
+               <label for="diseaseName" class="col-sm-3 control-label">病名：</label>
+                   <div class="col-sm-4">
+                       <input type="text" class="form-control  m-b" ng-model="Info.diseaseName" placeholder="请输入病名" required>
+                  </div>
+             </div>
+            <div class="form-group">
+              <label for="category" class="col-sm-3 control-label">用药信息：</label>
+                  <div class="col-sm-9">
+                    <textarea class="form-control" ng-model="Info.comments" required></textarea>
+                 </div>
+            </div>
+          </div>
+         </div>
+         <div class="modal-footer">
+             <button class="btn btn-primary" type="button" ng-click="ok()" ng-disabled="add_dis.$invalid">确定</button>
+             <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+         </div>
+</script>

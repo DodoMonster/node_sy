@@ -45,11 +45,10 @@ app.get('/sup/*', function(req, res) {
   res.redirect('/sup');
 });
 
-app.use('/api', dis);
-app.use('/api', pro);
+app.use('/producer', dis);
+app.use('/producer', pro);
 app.use('/api', pur);
 app.use('/api', ship);
-
 app.listen(app.get('port'), function() {
   console.log('running on port:' + app.get('port'));
 });

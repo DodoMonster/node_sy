@@ -3,7 +3,6 @@
 </div>
 <hr/>
 <div class="p_ops clearfix">
-
     <form class="p_dash">
       <select class="form-control input-lg p_type" ng-model="searchType">
         <option value="intime">进场时间</option>
@@ -15,9 +14,9 @@
       <input class="form-control input-lg p_search" type="text" ng-model="sContent" placeholder="请输入搜索内容">
       <button class="btn btn-default btn-lg" type="submit" ng-click="search()">Search</button>
     </form>
-      <button type="button" class="btn my_btn pull-left" ng-click="add()"><span class="glyphicon glyphicon-plus"></span></button>
+      <button type="button" class="btn my_btn pull-left" ng-click="openModal()"><span class="glyphicon glyphicon-plus"></span></button>
 </div>
-<table ng-table="pcl.tableParams"  class="table table-bordered table-hover table-condensed">
+<table ng-table="pcl.tableParams"  class="table table-bordered table-hover table-condensed text-c">
   <tbody>
       <colgroup>
         <col width="9%" />
@@ -91,8 +90,8 @@
               <input type="text" name="isSaled" ng-model="row.isSaled" class="form-control input-sm" required />
           </div>
       </td>
-      <td data-title="'质检信息'" class="text-c"><button class="btn btn-default btn-sm " ng-click="pcl.zhijian(row.number)" ><span class="glyphicon glyphicon-envelope"></span></button></td>
-      <td data-title="'用药历史'" class="text-c"><button class="btn btn-default btn-sm " ng-click="yongyao()" ><span class="glyphicon glyphicon-list-alt"></span></button></td>
+      <td data-title="'质检信息'" class="text-c"><button class="btn btn-default btn-sm " ng-click="openQcModal(row)" ><span class="glyphicon glyphicon-envelope"></span></button></td>
+      <td data-title="'生病信息'" class="text-c"><button class="btn btn-default btn-sm " ng-click="openDiseaseModal(row)"><span class="glyphicon glyphicon-list-alt"></span></button></td>
       <td data-title="'操作'">
           <button class="btn btn-primary btn-sm " ng-click="save(row)" ng-if="row.isEditing" ng-disabled="rowForm.$pristine || rowForm.$invalid"><span class="glyphicon glyphicon-ok"></span></button>
           <button class="btn btn-default btn-sm" ng-click="cancel(row)" ng-if="row.isEditing"><span class="glyphicon glyphicon-remove"></span></button>
@@ -102,15 +101,15 @@
     </tr>
   </tbody>
 </table>
-    <div class="page_btns">
-      <button class="btn btn-default pull-left" ng-click="lastPage()">
-        <span class="">上一页</span>
-      </button>
-      <div class="c_page">第--{{currentPage}}--页</div>
-      <button class="btn btn-default pull-right" ng-click="nextPage()">
-        <span class="">下一页</span>
-      </button>
-    </div>
+<div class="page_btns">
+  <button class="btn btn-default pull-left" ng-click="lastPage()">
+    <span class="">上一页</span>
+  </button>
+  <div class="c_page">第--{{currentPage}}--页</div>
+  <button class="btn btn-default pull-right" ng-click="nextPage()">
+    <span class="">下一页</span>
+  </button>
+</div>
 
 <script type="text/ng-template" id="proModal.html">
          <div class="modal-header">
@@ -159,21 +158,21 @@
             <div class="form-group">
               <label for="category" class="col-sm-2 control-label">种类：</label>
                   <div class="col-sm-4">
-                      <input type="text" class="form-control  m-b" ng-model="pInfo.category" placeholder="请输入编号" required>
+                      <input type="text" class="form-control  m-b" ng-model="pInfo.category" placeholder="请输入种类" required>
                  </div>
               <label for="pici" class="col-sm-2 control-label">状态：</label>
                  <div class="col-sm-4">
-                     <input type="text" class="form-control" ng-model="pInfo.state" placeholder="请输入批次" required>
+                     <input type="text" class="form-control" ng-model="pInfo.state" placeholder="请输入状态" required>
                  </div>
             </div>
             <div class="form-group">
               <label for="category" class="col-sm-2 control-label">价格：</label>
                   <div class="col-sm-4">
-                      <input type="text" class="form-control  m-b" ng-model="pInfo.price" placeholder="请输入编号" required>
+                      <input type="number" class="form-control  m-b" ng-model="pInfo.price" placeholder="请输入价格" required>
                  </div>
               <label for="pici" class="col-sm-2 control-label">是否出售：</label>
                  <div class="col-sm-4">
-                     <input type="text" class="form-control" ng-model="pInfo.isSaled" placeholder="请输入批次" required>
+                     <input type="text" class="form-control" ng-model="pInfo.isSaled" placeholder="请输入是否出售" required>
                  </div>
             </div>
           </div>
@@ -182,4 +181,41 @@
              <button class="btn btn-primary" type="button" ng-click="ok()" ng-disabled="add_pro.$invalid">确定</button>
              <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
          </div>
+</script>
+<script type="text/ng-template" id="qcModal.html">
+  <div class="modal-header clearfix">
+       <h3 class="modal-title text-c">质检信息</h3>
+  </div>
+  <div class="modal-body">
+     <table ng-table="qcModal.tableParams"  class="table table-bordered table-hover table-condensed text-c">
+      <tbody>
+        <tr ng-repeat="row in datas"  ng-form="rowForm">
+          <td  data-title="'检测时间'">
+             <span>{{row.date}}</span>
+          </td>
+          <td data-title="'检测机构'">
+            <span>{{row.organization}}</span>
+          </td>
+          <td data-title="'检测人员'">
+            <span>{{row.person}}</span>
+          </td>
+          <td data-title="'质检批次'" ng-switch="row.pici">
+            <span ng-switch-default>{{row.pici}}</span>
+            <div class="controls" ng-class="" ng-switch-when="true">
+                <input type="text" name="pici" ng-model="row.comments" class="form-control input-sm" required />
+            </div>
+          </td>
+          <td data-title="'合格／质检'" ng-switch="row.comments">
+            <span >{{row.comments}}</span>
+            <div class="controls" ng-class="" ng-switch-when="true">
+                <input type="text" name="comments" ng-model="row.comments" class="form-control input-sm" required />
+            </div>
+          </td>
+          <td data-title="'操作'">
+            <button class="btn btn-danger btn-sm" ng-click="del(row)" ng-if="!row.isEditing"><span class="glyphicon glyphicon-trash"></span></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </script>

@@ -5,5 +5,10 @@ angular.module('syApp', [
     'ngTable',
     'ui.bootstrap',
     'ngResource',
+    'toaster',
 ]);
 angular.module('syApp').constant('_', window._);
+
+function alertSuccess() {
+    alert('filed');
+}

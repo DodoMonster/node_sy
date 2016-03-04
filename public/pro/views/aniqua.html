@@ -1,0 +1,58 @@
+<div style="text-align:center">
+  <h1>质检信息</h1>
+</div>
+<hr/>
+<div class="dis_wrapper">
+    <div class="ops clearfix">
+        <div class="col-xs-8">
+            <span>牲畜溯源码：{{suyuancode}}</span>
+        </div>
+        <button type="button" class="btn my_btn pull-right" ng-click="add()">添加</button>
+    </div>
+     <table ng-table="AniQuaCtrl.tableParams" class="table table-bordered table-hover table-condensed text-c">
+      <tbody>
+        <colgroup>
+
+        </colgroup>
+        <tr ng-repeat="row in datas"  ng-form="rowForm">
+          <td data-title="'检测时间'">
+             <span>{{row.date}}</span>
+          </td>
+          <td data-title="'检测机构'">
+            <span>{{row.organization}}</span>
+          </td>
+          <td data-title="'检测人员'">
+            <span>{{row.person}}</span>
+          </td>
+          <td data-title="'质检批次'">
+            <span>{{row.pici}}</span>
+          </td>
+          <td data-title="'结果说明'">
+            <span>{{row.comments}}</span>
+          </td>
+          <td data-title="'操作'">
+            <button class="btn btn-danger btn-sm" ng-click="del(row)" ng-if="!row.isEditing"><span class="glyphicon glyphicon-trash"></span></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<script type="text/ng-template" id="aniQuaModal.html">
+         <div class="modal-header">
+             <h3 class="modal-title">添加质检批次</h3>
+         </div>
+         <div class="modal-body clearfix add_pro">
+           <div class＝"form-horizontal" ng-form="add_dis">
+             <div class="form-group">
+               <label for="pici" class="col-sm-3 control-label">质检批次：</label>
+               <div class="col-sm-9">
+                  <input type="number" class="form-control  m-b" ng-model="Info.pici" placeholder="质检批次" required>
+                </div>
+             </div>
+          </div>
+         </div>
+         <div class="modal-footer">
+             <button class="btn btn-primary" type="button" ng-click="ok()" ng-disabled="add_dis.$invalid">确定</button>
+             <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+         </div>
+</script>

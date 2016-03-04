@@ -1,1 +1,128 @@
-<h1>生产信息管理</h1>
+<div style="text-align:center">
+  <h1>质检信息统计
+    <button type="button" class="btn my_btn pull-right" ng-click="add()"><span class="glyphicon glyphicon-plus"></span></button>
+</h1>
+</div>
+<hr/>
+<table ng-table="qcl.tableParams"  class="table table-bordered table-hover table-condensed t-c"  show-filter="true" >
+  <tbody>
+      <colgroup>
+            <col width="5%">
+            <col width="15%">
+            <col width="15%">
+            <col width="10%">
+            <col width="10%">
+            <col width="5%">
+            <col width="30%">
+            <col width="10%">
+      </colgroup>
+    <tr ng-repeat="row in $data"  ng-form="rowForm" >
+      <td  ng-switch="row.isEditing" data-title="'检测时间'" filter="{date: 'text'}" >
+           <span ng-switch-default>{{row.date}}</span>
+        <div  ng-class="controls" ng-switch-when="true">
+            <input type="text" name="date" ng-model="row.date" class="form-control input-sm" required />
+          </div>
+      </td>
+      <td data-title="'检测机构'"  ng-switch="row.isEditing">
+          <span ng-switch-default>{{row.organization}}</span>
+          <div class="controls" ng-class="" ng-switch-when="true">
+              <input type="text" name="organization" ng-model="row.organization" class="form-control input-sm" required />
+          </div>
+      </td>
+      <td data-title="'检测人员'" ng-switch="row.isEditing">
+        <span ng-switch-default>{{row.person}}</span>
+        <div class="controls" ng-class="" ng-switch-when="true">
+            <input type="text" name="category" ng-model="row.person" class="form-control input-sm" required />
+        </div>
+      </td>
+      <td data-title="'合格数量'"  ng-switch="row.isEditing">
+          <span ng-switch-default>{{row.quaNum}}</span>
+        <div class="controls" ng-class="" ng-switch-when="true">
+            <input type="text" name="number" ng-model="row.quaNum" class="form-control input-sm" required />
+        </div>
+      </td>
+      <td data-title="'检测数量'"  ng-switch="row.isEditing">
+          <span ng-switch-default>{{row.testNum}}</span>
+        <div class="controls" ng-class="" ng-switch-when="true">
+            <input type="text" name="number" ng-model="row.testNum" class="form-control input-sm" required />
+        </div>
+      </td>
+      <td data-title="'质检批次'" sortable="'number'"  filter="{pici: 'number'}" ng-switch="row.isEditing">
+          <span ng-switch-default>{{row.pici}}</span>
+          <div class="controls" ng-class="" ng-switch-when="true">
+              <input type="text" name="pici" ng-model="row.pici" class="form-control input-sm" required />
+          </div>
+      </td>
+      <td data-title="'结果说明'" class="text-c"  ng-switch="row.isEditing">
+            <span ng-switch-default>{{row.comments}}</span>
+            <div class="controls" ng-class="" ng-switch-when="true">
+                <input type="text" name="comments" ng-model="row.comments" class="form-control input-sm" required />
+            </div>
+      </td>
+      <td data-title="'操作'">
+          <button class="btn btn-primary btn-sm " ng-click="save(row)" ng-if="row.isEditing" ng-disabled="rowForm.$pristine || rowForm.$invalid"><span class="glyphicon glyphicon-ok"></span></button>
+          <button class="btn btn-default btn-sm" ng-click="cancel(row)" ng-if="row.isEditing"><span class="glyphicon glyphicon-remove"></span></button>
+          <button class="btn btn-default btn-sm" ng-click="edit(row)" ng-if="!row.isEditing"><span class="glyphicon glyphicon-pencil"></span></button>
+          <button class="btn btn-danger btn-sm" ng-click="del(row)" ng-if="!row.isEditing"><span class="glyphicon glyphicon-trash"></span></button>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<script type="text/ng-template" id="quaModal.html">
+         <div class="modal-header">
+             <h3 class="modal-title">添加质检记录</h3>
+         </div>
+         <div class="modal-body clearfix add_pro">
+           <div class＝"form-horizontal" ng-form="add_qua">
+             <div class="form-group">
+               <label for="date" class="col-sm-2 control-label">检测日期：</label>
+               <div class="col-sm-10">
+                    <p class="input-group">
+                      <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="Info.date" is-open="status.dateOpened"  datepicker-options="dateOptions"  ng-required="true" close-text="Close" required/>
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="dateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                      </span>
+                    </p>
+                </div>
+             </div>
+             <div class="form-group">
+              <label for="organization" class="col-sm-2 control-label">检测机构：</label>
+               <div class="col-sm-10">
+                       <input type="text" class="form-control  m-b" ng-model="Info.organization" placeholder="请输入检测机构" required>
+                </div>
+             </div>
+             <div class="form-group">
+               <label for="pici" class="col-sm-2 control-label">质检批次：</label>
+                   <div class="col-sm-4">
+                       <input type="text" class="form-control m-b" ng-model="Info.pici" placeholder="请输入质检批次" required>
+                  </div>
+              <label for="person" class="col-sm-2 control-label">检测人员：</label>
+                  <div class="col-sm-4">
+                      <input type="text" class="form-control m-b" ng-model="Info.person" placeholder="请输入检测人员" required>
+                  </div>
+             </div>
+             <div class="form-group">
+                 <label for="quaNum" class="col-sm-2 control-label">合格数量：</label>
+                   <div class="col-sm-4">
+                     <input type="number" class="form-control m-b" ng-model="Info.quaNum" placeholder="请输入合格数量" required>
+                   </div>
+                 <label for="testNum" class="col-sm-2 control-label">检测数量：</label>
+                  <div class="col-sm-4">
+                    <input type="number" class="form-control m-b" ng-model="Info.testNum" placeholder="请输入检测数量" required>
+                  </div>
+            </div>
+            <div class="form-group">
+              <label for="comments" class="col-sm-2 control-label">用药信息：</label>
+                  <div class="col-sm-10">
+                    <textarea class="form-control" ng-model="Info.comments" required></textarea>
+                 </div>
+            </div>
+          </div>
+         </div>
+         <div class="modal-footer">
+             <button class="btn btn-primary" type="button" ng-click="ok()" ng-disabled="add_pro.$invalid">确定</button>
+             <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+         </div>
+</script>

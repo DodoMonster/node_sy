@@ -36,6 +36,18 @@ function routeConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         ],
       },
     })
+    .state('pro.disease', {
+      url: '/disease/{animalId}/{suyuancode}',
+      templateUrl: 'views/disease.html',
+      controller: 'DiseaseCtrl',
+      resolve: {
+        deps: ['$ocLazyLoad',
+          function($ocLazyLoad) {
+            return $ocLazyLoad.load(['pro/js/controllers/DiseaseCtrl.js']);
+          },
+        ],
+      },
+    })
     .state('pro.products', {
       url: '/products',
       templateUrl: 'views/products.html',
@@ -51,6 +63,26 @@ function routeConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('pro.products_info', {
       url: '/pro_info',
       templateUrl: 'views/pro_info.html',
+      controller: 'QuaCtrl as qcl',
+      resolve: {
+        deps: ['$ocLazyLoad',
+          function($ocLazyLoad) {
+            return $ocLazyLoad.load(['pro/js/controllers/QuaCtrl.js']);
+          },
+        ],
+      },
+    })
+    .state('pro.aniqua', {
+      url: '/aniqua/{animalId}/{suyuancode}',
+      templateUrl: 'views/aniqua.html',
+      controller: 'AniQuaCtrl',
+      resolve: {
+        deps: ['$ocLazyLoad',
+          function($ocLazyLoad) {
+            return $ocLazyLoad.load(['pro/js/controllers/AniQuaCtrl.js']);
+          },
+        ],
+      },
     })
     .state('pro.goods', {
       url: '/goods',

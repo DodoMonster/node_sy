@@ -7,14 +7,16 @@ app.controller('DisCtrl', ['$scope', '$uibModal', 'DisService', function($scope,
 
   $scope.save = function(info) {
     info.isEditing = false;
-    DisService.update({disId:info.id}, info, function(message) {
+    DisService.update({
+      id: info.id
+    }, info, function(message) {
       console.log(message);
     });
   };
 
   $scope.cancle = function(info) {
-    info.name = _this.original.name;    //取消修改的内容，将原数据返回
-    info.telephone =  _this.original.telephone;
+    info.name = _this.original.name; //取消修改的内容，将原数据返回
+    info.telephone = _this.original.telephone;
     info.address = _this.original.address;
     info.isEditing = false;
   };
@@ -25,8 +27,10 @@ app.controller('DisCtrl', ['$scope', '$uibModal', 'DisService', function($scope,
 
   };
 
-  $scope.del = function(info) {  //删除操作
-    DisService.del({disId:info.id}, function(message) {
+  $scope.del = function(info) { //删除操作
+    DisService.del({
+      disId: info.id
+    }, function(message) {
       _.remove($scope.datas, function(index) {
         return index.id == info.id;
       });
@@ -36,7 +40,7 @@ app.controller('DisCtrl', ['$scope', '$uibModal', 'DisService', function($scope,
   $scope.open = function(size) {
     var modalInstance = $uibModal.open({
       templateUrl: 'disModal.html',
-      controller:'disModalCtrl',
+      controller: 'disModalCtrl',
     });
     modalInstance.result.then(function(aInfo) {
       DisService.add(aInfo, function(result) {
@@ -48,8 +52,7 @@ app.controller('DisCtrl', ['$scope', '$uibModal', 'DisService', function($scope,
 
     });
   };
-},
-]);
+}, ]);
 
 app.controller('disModalCtrl', ['$scope', '$uibModalInstance', function($scope, $uibModalInstance) {
   $scope.ok = function() {
@@ -60,5 +63,4 @@ app.controller('disModalCtrl', ['$scope', '$uibModalInstance', function($scope, 
   $scope.cancel = function() {
     $uibModalInstance.dismiss('cancel');
   };
-},
-]);
+}, ]);
