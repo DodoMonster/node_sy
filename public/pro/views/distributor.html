@@ -1,13 +1,14 @@
 <div style="text-align:center">
-  <h1 >分销商管理</h1>
+  <h1 >分销商管理
+        <button type="button" class="btn my_btn pull-right" ng-click="open()"><span class="glyphicon glyphicon-plus"></span></button>
+  </h1>
 </div>
 <hr/>
 <div class="dis_wrapper">
     <div class="ops clearfix">
-        <div class="col-xs-8 r_dash">
+        <div class="col-xs-12 r_dash">
           <input class="form-control input-lg" type="text" ng-model="query" placeholder="请输入厂商名称或者电话">
         </div>
-        <button type="button" class="btn my_btn pull-right" ng-click="open()"><span class="glyphicon glyphicon-plus"></span></button>
     </div>
     <div ng-repeat="info in datas | filter:query "  ng-switch="info.isEditing" class="disbox f-i" ng-form="disForm">
         <div class="yyzz">
@@ -18,7 +19,7 @@
         </div>
         <div class="dis_info">
             <div class="info_s">
-            姓名：<span ng-switch-default>{{info.name}}</span>
+            <span style="letter-spacing:36px">姓</span>名：<span ng-switch-default>{{info.name}}</span>
               <div class="controls" ng-class="" ng-switch-when="true">
                   <input type="text" name="name" ng-model="info.name" class="form-control input-sm" required />
               </div>

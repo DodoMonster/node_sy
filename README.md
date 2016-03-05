@@ -1,7 +1,8 @@
-# 溯源后台系统前端部分
+# 溯源后台系统
 
  前端：angular + bootstrap </br>
- 后端：express ＋ mongodb 提供 RESTful API(只用来测试） </br>
+ 后端：express 提供 RESTful API </br>
+ 数据库：mongodb </br>
 
 克隆到本地：git clone https://github.com/NumberZ/node_sy.git
 
