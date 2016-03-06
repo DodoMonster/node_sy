@@ -258,6 +258,9 @@ body {
   color: #7793a7;
   background-color: #1c2b36;
 }
+.navbar-brand {
+  border-bottom: 1px dashed #c4d0d9;
+}
 .user_header {
   margin-top: 4px;
   width: 160px;
@@ -496,7 +499,7 @@ body {
 }
 .disbox {
   width: 800px;
-  height: 248px;
+  height: 280px;
   margin: 30px auto;
   background-color: #eee;
   border: 1px solid #eee;
@@ -523,9 +526,13 @@ body {
   overflow: hidden;
   margin-top: 48px;
   margin-left: 25px;
+  margin-right: 20px;
+}
+.clear {
+  clear: both;
 }
 .dis_info {
-  float: left;
+  word-break: break-all;
   height: 120px;
   margin-left: 20px;
   margin-top: 46px;
@@ -534,6 +541,10 @@ body {
 .dis_info .controls {
   display: inline-block;
   width: 400px;
+}
+.dis_info .btn_group {
+  position: relative;
+  top: 30px;
 }
 .dis_info .btn_group .btn {
   margin-left: 10px;
@@ -586,13 +597,10 @@ body {
 }
 .ops {
   width: 600px;
-  margin: 0 auto 20px auto;
+  margin: 0 auto;
 }
 .ops .input-lg {
   height: 50px;
   background: url('../img/search.png') 5px no-repeat;
   padding-left: 25px;
-}
-.ops span {
-  font-size: 20px;
 }

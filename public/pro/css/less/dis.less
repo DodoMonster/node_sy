@@ -1,7 +1,7 @@
 //main: style.less
 .disbox {
     width: 800px;
-    height: 248px;
+    height: 280px;
     margin: 30px auto;
     background-color: #eee;
     border: 1px solid #eee;
@@ -29,9 +29,13 @@
   overflow: hidden;
   margin-top: 48px;
   margin-left: 25px;
+  margin-right: 20px;
+}
+.clear{
+    clear:both;
 }
 .dis_info {
-  float: left;
+  word-break: break-all;
   height: 120px;
   margin-left: 20px;
   margin-top: 46px;
@@ -41,6 +45,8 @@
     width:400px;
   }
   .btn_group {
+      position: relative;;
+      top: 30px;
     .btn {
       margin-left: 10px;
     }
@@ -97,13 +103,10 @@ box-shadow: 0 10px 20px rgba(0,0,0,.19),0 6px 6px rgba(0,0,0,.23);
 }
 .ops {
   width:600px;
-  margin:0 auto 20px auto;
+  margin:0 auto;
   .input-lg {
-    height: 50px;
-    background: url('../img/search.png') 5px no-repeat;
-    padding-left: 25px;
-  }
-  span{
-      font-size: 20px;
+      height: 50px;
+      background: url('../img/search.png') 5px no-repeat;
+      padding-left: 25px;
   }
 }

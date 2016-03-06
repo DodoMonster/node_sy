@@ -258,6 +258,9 @@ body {
   color: #7793a7;
   background-color: #1c2b36;
 }
+.navbar-brand {
+  border-bottom: 1px dashed #c4d0d9;
+}
 .user_header {
   margin-top: 4px;
   width: 160px;

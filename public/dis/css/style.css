@@ -258,6 +258,9 @@ body {
   color: #7793a7;
   background-color: #1c2b36;
 }
+.navbar-brand {
+  border-bottom: 1px dashed #c4d0d9;
+}
 .user_header {
   margin-top: 4px;
   width: 160px;
@@ -378,7 +381,6 @@ body {
 }
 .r_dash {
   padding-right: 50px;
-  border-right: 1px dashed #ccc;
 }
 .m-b {
   margin-bottom: 10px;
@@ -553,6 +555,8 @@ body {
   opacity: 0;
 }
 .my_btn {
+  position: fixed;
+  right: 10px;
   display: inline-block;
   width: 50px;
   height: 50px;
@@ -579,4 +583,6 @@ body {
 }
 .ops .input-lg {
   height: 50px;
+  background: url('../img/search.png') 5px no-repeat;
+  padding-left: 25px;
 }

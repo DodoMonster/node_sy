@@ -12,17 +12,17 @@
     </div>
     <div ng-repeat="info in datas | filter:query "  ng-switch="info.isEditing" class="disbox f-i" ng-form="disForm">
         <div class="yyzz">
-              <img ng-src="img/case.png"/>
+            <img ng-src="img/case.png"/>
         </div>
         <div class="ding">
-          <img ng-src="img/ding.png"/>
+            <img ng-src="img/ding.png"/>
         </div>
         <div class="dis_info">
             <div class="info_s">
-            <span style="letter-spacing:36px">姓</span>名：<span ng-switch-default>{{info.name}}</span>
-              <div class="controls" ng-class="" ng-switch-when="true">
-                  <input type="text" name="name" ng-model="info.name" class="form-control input-sm" required />
-              </div>
+                <span style="letter-spacing:36px">姓</span>名：<span ng-switch-default>{{info.name}}</span>
+                <div class="controls" ng-class="" ng-switch-when="true">
+                    <input type="text" name="name" ng-model="info.name" class="form-control input-sm" required />
+                </div>
             </div>
             <div class="info_s">
               联系电话：<span ng-switch-default>{{info.telephone}}</span>
@@ -42,7 +42,9 @@
                 <button class="btn btn-success btn-sm btn_save" ng-click="save(info)" ng-if="info.isEditing" ng-disabled="disForm.$pristine || disForm.$invalid"><span class="glyphicon glyphicon-ok"></span></button>
                 <button class="btn btn-danger btn-sm btn_cancle" ng-click="cancle(info)" ng-if="info.isEditing"><span class="glyphicon glyphicon-remove"></span></button>
           </div>
+          <!-- <div style="clear:both"></div> -->
         </div>
+        <div class="clear"></div>
     </div>
 </div>
 <script type="text/ng-template" id="disModal.html">
